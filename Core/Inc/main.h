@@ -50,7 +50,12 @@ extern "C" {
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
-void Error_Handler(void);
+void Error_Handler	(void);
+/*
+ * printf() and sprintf() from printf-stdarg.c
+ */
+int my_printf	(const char *format, ...);
+int my_sprintf	(char *out, const char *format, ...);
 
 /* USER CODE BEGIN EFP */
 

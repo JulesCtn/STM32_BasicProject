@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <stdarg.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -68,6 +69,7 @@ static void MX_USART3_UART_Init(void);
   */
 int main(void)
 {
+	uint8_t	i = 0;
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -84,13 +86,15 @@ int main(void)
   {
 	  // Toggle LED pin
 	  HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+	  HAL_Delay(250);
+	  HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
 
-	  // Send '#' only once
-	  while (!(USART3->SR & USART_SR_TC));
-	  USART3->DR = '#';
+	  // Send '#i' only once
+	  my_printf("#%d\r\n", i);
+	  i++;
 
 	  // Wait using a counting delay
-	  HAL_Delay(500);
+	  HAL_Delay(250);
   }
 }
 
